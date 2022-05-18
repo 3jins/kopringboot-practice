@@ -5,6 +5,7 @@ plugins {
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     kotlin("jvm") version "1.6.21"
     kotlin("plugin.spring") version "1.6.21"
+    kotlin("plugin.jpa") version "1.6.21"
     kotlin("kapt") version "1.6.21"
 }
 
@@ -22,10 +23,12 @@ repositories {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web:2.6.7")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa:2.6.7")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.2")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.2")
+    implementation("com.h2database:h2:2.1.212") // TODO: mysql 연동 후 testImplementation으로 이동
     implementation("org.mapstruct:mapstruct:1.4.2.Final")
     kapt("org.mapstruct:mapstruct:1.4.2.Final")
     kapt("org.mapstruct:mapstruct-processor:1.4.2.Final")
@@ -40,6 +43,12 @@ dependencies {
     testImplementation("io.kotest:kotest-extensions-spring:4.4.3")
     testImplementation("io.mockk:mockk:1.12.3")
     testImplementation("com.ninja-squad:springmockk:3.1.1")
+}
+
+allOpen {
+    annotation("javax.persistence.Entity")
+    annotation("javax.persistence.MappedSuperclass")
+    annotation("javax.persistence.Embeddable")
 }
 
 tasks.withType<KotlinCompile> {

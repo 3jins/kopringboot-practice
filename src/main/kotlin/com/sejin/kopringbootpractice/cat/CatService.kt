@@ -1,24 +1,15 @@
 package com.sejin.kopringbootpractice.cat
 
-import com.sejin.kopringbootpractice.common.ColorEnum
+import com.sejin.kopringbootpractice.cat.model.CatMapper
+import com.sejin.kopringbootpractice.cat.model.CatVo
 import org.springframework.stereotype.Service
 
 @Service
-class CatService {
-    fun getCatList(): List<Cat> {
-        return listOf(
-            Cat(
-                name = "KimAeYong",
-                kind = CatKindEnum.KOREAN_SHORT_HAIR,
-                furColor = ColorEnum.CHEESE_YELLOW,
-                age = 4,
-            ),
-            Cat(
-                name = "TakeALook",
-                kind = CatKindEnum.RUSSIAN_BLUE,
-                furColor = ColorEnum.RUSSIAN_BLUE_GRAY,
-                age = 7,
-            ),
-        )
+class CatService(
+    private val catRepository: CatRepository,
+) {
+    fun getCatList(): List<CatVo> {
+        return CatMapper.getInstance()
+            .mapEntityListToVoList(catRepository.findAll())
     }
 }
