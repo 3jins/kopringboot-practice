@@ -1,6 +1,8 @@
 package com.sejin.kopringbootpractice.cat
 
 import com.ninjasquad.springmockk.MockkBean
+import com.sejin.kopringbootpractice.cat.enumeration.CatKindEnum
+import com.sejin.kopringbootpractice.cat.model.CatVo
 import com.sejin.kopringbootpractice.common.BaseControllerTest
 import com.sejin.kopringbootpractice.common.ColorEnum
 import io.mockk.every
@@ -18,13 +20,13 @@ internal class CatControllerTest(
         Given("CatController") {
             When("`GET /cat` is called") {
                 every { catService.getCatList() } returns listOf(
-                    Cat(
+                    CatVo(
                         name = "KimAeYong",
                         kind = CatKindEnum.KOREAN_SHORT_HAIR,
                         furColor = ColorEnum.CHEESE_YELLOW,
                         age = 4,
                     ),
-                    Cat(
+                    CatVo(
                         name = "TakeALook",
                         kind = CatKindEnum.RUSSIAN_BLUE,
                         furColor = ColorEnum.RUSSIAN_BLUE_GRAY,
