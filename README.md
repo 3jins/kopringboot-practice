@@ -3,5 +3,5 @@
 
 ## To-Do
 - [x] Kotlin + Spring Boot 사용하여 기본적인 웹 어플리케이션 layered 구조(Controller, Service) 잡기
-- [ ] DB 연동 및 Repository 추가
+- [x] DB 연동 및 Repository 추가
 - [ ] DDD 적용
