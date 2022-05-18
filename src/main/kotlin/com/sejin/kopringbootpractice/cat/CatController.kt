@@ -1,5 +1,6 @@
 package com.sejin.kopringbootpractice.cat
 
+import com.sejin.kopringbootpractice.cat.model.CatVo
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController
 class CatController(private val catService: CatService) {
 
     @GetMapping("/cat")
-    fun getCats(): List<Cat> {
+    fun getCats(): List<CatVo> {
         return catService.getCatList()
     }
 }
