@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("org.springframework.boot") version "2.6.7"
+    id("org.springframework.boot") version "2.7.0"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     kotlin("jvm") version "1.6.21"
     kotlin("plugin.spring") version "1.6.21"
@@ -22,27 +22,30 @@ repositories {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-web:2.6.7")
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa:2.6.7")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.2")
+    implementation("org.springframework.boot:spring-boot-starter-web:2.7.0")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa:2.7.0")
+    implementation("org.springframework.boot:spring-boot-starter-batch:2.7.0")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.3")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.2")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.3")
     implementation("com.h2database:h2:2.1.212") // TODO: mysql 연동 후 testImplementation으로 이동
-    implementation("org.mapstruct:mapstruct:1.4.2.Final")
-    kapt("org.mapstruct:mapstruct:1.4.2.Final")
-    kapt("org.mapstruct:mapstruct-processor:1.4.2.Final")
-    kaptTest("org.mapstruct:mapstruct-processor:1.4.2.Final")
+    implementation("org.mapstruct:mapstruct:1.5.1.Final")
+    kapt("org.mapstruct:mapstruct:1.5.1.Final")
+    kapt("org.mapstruct:mapstruct-processor:1.5.1.Final")
+    kaptTest("org.mapstruct:mapstruct-processor:1.5.1.Final")
 
-    testImplementation("org.springframework.boot:spring-boot-starter-test:2.6.7") {
+    testImplementation("org.springframework.boot:spring-boot-starter-test:2.7.0") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
         exclude(module = "mockito-core")
     }
-    testImplementation("io.kotest:kotest-assertions-core:5.3.0")
-    testImplementation("io.kotest:kotest-runner-junit5:5.3.0")
+    testImplementation("org.springframework.batch:spring-batch-test:4.3.6")
+    testImplementation("io.kotest:kotest-assertions-core:5.3.1")
+    testImplementation("io.kotest:kotest-runner-junit5:5.3.1")
     testImplementation("io.kotest:kotest-extensions-spring:4.4.3")
-    testImplementation("io.mockk:mockk:1.12.3")
+    testImplementation("io.mockk:mockk:1.12.4")
     testImplementation("com.ninja-squad:springmockk:3.1.1")
+
 }
 
 allOpen {
